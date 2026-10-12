@@ -74,7 +74,7 @@ flowchart TD
         PROMOTER["AutoHarness Promoter (Validate & Store)"]:::highlightBox
         SAGA_JOURNAL["LIFO Compensating Rollback Journal (Saga)"]:::ledgerBox
         ACTION_LEDGER["ActionLedger Cryptographic Merkle Seal"]:::ledgerBox
-        NERVE_REFLEX -->|Tests Passed (100% Invariants)| PROMOTER
+        NERVE_REFLEX -->|Tests Passed| PROMOTER
         NERVE_REFLEX -->|Regression Detected| SAGA_JOURNAL
         PROMOTER --> ACTION_LEDGER
         SAGA_JOURNAL --> ACTION_LEDGER
@@ -102,11 +102,11 @@ sequenceDiagram
     Engine->>Engine: Sample MAP-Elites Policy & Mutate AST Grammar
     Engine->>Sandbox: Apply Candidate AST Patch to Git Worktree
     Sandbox->>Sandbox: Execute FAIL_TO_PASS & PASS_TO_PASS Test Suite
-    alt Tests Passed (100% Invariants Satisfied)
+    alt All Invariants Satisfied
         Sandbox->>Promoter: Test Success Telemetry & Validated Patch
         Note over Promoter: Lint & Promote Skill to Library<br/>Append SHA-256 Merkle Block
         Promoter-->>Issue: Emit Certified Non-Regressive Pull Request
-    else Regression Detected (PASS_TO_PASS Failed)
+    else Regression Detected
         Sandbox->>Engine: Counterfactual Failure Traceback
         Engine->>Engine: Genetic Crossover & Inverse AST Rollback
     end
