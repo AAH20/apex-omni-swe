@@ -23,21 +23,14 @@ All benchmarks executed on Apple Silicon (macOS Darwin, Python 3.14.7 standard l
 
 Each canonical benchmark represents a class of software engineering failure modes commonly encountered in SWE-bench Lite and SWE-bench Verified:
 
-```
-+---------------------------------------------------------------------------------------------------------+
-|                                SWE-BENCH CANONICAL RESOLUTION BREAKDOWN                                 |
-+--------------+-------------------+----------------------------+-------------+---------------------------+
-| Task ID      | Repository        | Bug Taxonomy               | Resolution  | Latency & Patch Strategy  |
-+--------------+-------------------+----------------------------+-------------+---------------------------+
-| APEX-SWE-001 | apex_query_core   | Off-by-one pagination      | RESOLVED    | 13.32 ms (ast_constant)   |
-| APEX-SWE-002 | apex_security_gw  | Missing None header guard  | RESOLVED    | 6.58 ms (ast_guard)       |
-| APEX-SWE-003 | apex_limiter      | Inverted rate boundary     | RESOLVED    | 1.86 ms (ast_operator)    |
-| APEX-SWE-004 | apex_cache_store  | Cache TTL equality check   | RESOLVED    | 1.69 ms (ast_operator)    |
-| APEX-SWE-005 | apex_telemetry    | Zero division guard        | RESOLVED    | 2.05 ms (ast_guard)       |
-+--------------+-------------------+----------------------------+-------------+---------------------------+
-| TOTAL        | 5 Task Instances  | 100% Invariants Preserved  | 5/5 (100%)  | Cumulative: 51.99 ms      |
-+---------------------------------------------------------------------------------------------------------+
-```
+| Task ID | Target Repository | Failure Mode / Invariant | Status | Latency | Winning Mutation Strategy |
+| :--- | :--- | :--- | :---: | ---: | :--- |
+| `APEX-SWE-001` | `apex_query_core` | Off-by-one pagination boundary | **RESOLVED** | 13.32 ms | `ast_constant_adjustment` |
+| `APEX-SWE-002` | `apex_security_gw` | Missing None header guard check | **RESOLVED** | 6.58 ms | `ast_guard_insertion` |
+| `APEX-SWE-003` | `apex_limiter` | Inverted rate boundary condition | **RESOLVED** | 1.86 ms | `ast_operator_inversion` |
+| `APEX-SWE-004` | `apex_cache_store` | Cache TTL expiration boundary | **RESOLVED** | 1.69 ms | `ast_operator_inversion` |
+| `APEX-SWE-005` | `apex_telemetry` | Zero division on empty metric series | **RESOLVED** | 2.05 ms | `ast_guard_insertion` |
+| **TOTAL** | **5 Benchmarks** | **100% Invariants Preserved** | **5/5 (100%)** | **51.99 ms** | **Pure AST Compiler Mutations** |
 
 ---
 
