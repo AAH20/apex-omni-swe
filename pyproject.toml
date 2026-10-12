@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apex-omni-swe"
+version = "1.0.0"
+description = "Sovereign Autonomous Software Engineering Hypervisor, AutoHarness Evolution Engine, and GraphRAG Synthesis Kernel."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Apex Growth Systems LLC", email = "engineering@apexgrowth.io"}
+]
+keywords = [
+    "autonomous-agent",
+    "swe-bench",
+    "software-engineering",
+    "graphrag",
+    "autoharness",
+    "steiner-tree",
+    "submodular-optimization",
+    "ast-mutation",
+    "map-elites",
+    "compiler-grade",
+    "zero-dependencies"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent"
+]
+dependencies = []
+
+[project.scripts]
+apex-omni-swe = "apex_omni_swe.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["apex_omni_swe*"]
